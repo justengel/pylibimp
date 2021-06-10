@@ -11,8 +11,7 @@ else:
     import __builtin__ as builtins
 
 
-__all__ = ['ImportHook', 'SaveImportHook', 'SaveBuiltinsImportHook', 'SaveImportlibImportHook',
-           'ChainImportHooks', 'DefaultHook']
+__all__ = ['ImportHook', 'SaveImportHook', 'SaveBuiltinsImportHook', 'SaveImportlibImportHook', 'ChainImportHooks']
 
 
 class ImportHook(ModuleType):
@@ -196,5 +195,3 @@ class ChainImportHooks(SaveImportHook):
             except (ImportError, AttributeError, TypeError, ValueError, Exception):
                 pass
 
-
-DefaultHook = ChainImportHooks([SaveBuiltinsImportHook(), SaveImportlibImportHook()])

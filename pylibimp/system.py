@@ -1,7 +1,7 @@
 import os.path
 import sys
 import contextlib
-from .import_hook import SaveImportHook, DefaultHook
+from .import_hook import SaveImportHook, SaveBuiltinsImportHook, SaveImportlibImportHook, ChainImportHooks
 
 __all__ = ['original_system', 'import_module', 'get_import_chain']
 
@@ -67,7 +67,7 @@ def import_module(path, import_chain=None, reset_modules=True, dependent_modules
         ImportError: If the import is unsuccessful.
     """
     if import_hook is None:
-        import_hook = DefaultHook
+        import_hook = ChainImportHooks([SaveBuiltinsImportHook(), SaveImportlibImportHook()])
 
     directory = path
     if import_chain is None:
