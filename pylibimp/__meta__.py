@@ -1,5 +1,5 @@
 name = 'pylibimp'
-version = '1.0.0'
+version = '1.0.1'
 description = 'Python import utilities'
 url = 'https://github.com/justengel/pylibimp'
 author = 'Justin Engel'
